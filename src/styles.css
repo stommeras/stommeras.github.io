@@ -11,10 +11,6 @@ body {
   color: var(--white);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
 *,
 *::before,
 *::after {

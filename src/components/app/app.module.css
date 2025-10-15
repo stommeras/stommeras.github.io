@@ -6,4 +6,23 @@
   justify-content: center;
   gap: 2rem;
   font-style: italic;
+  padding: 0rem clamp(1rem, 2vw, 3rem);
+}
+
+.title {
+  position: relative;
+  font-size: clamp(3rem, 10vw, 4rem);
+  border-radius: clamp(0.4rem, 0.75vw, 1rem);
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--white);
+    color: var(--black);
+  }
+}
+
+.subtitle {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  text-align: center;
 }
