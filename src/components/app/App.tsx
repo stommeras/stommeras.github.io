@@ -1,13 +1,14 @@
 import * as React from "react";
+import { MagicText } from "../magic-text/MagicText";
 import styles from "./app.module.css";
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const INITIAL_TITLE = "TØMMERÅS";
+export const INITIAL_TITLE = "TØMMERÅS";
 
 export function App() {
   const [title, setTitle] = React.useState(INITIAL_TITLE);
   const isAnimating = React.useRef(false);
-  const intervalRef = React.useRef<NodeJS.Timeout>(null);
+  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const onTitleHover = () => {
     if (isAnimating.current) return;
@@ -23,11 +24,11 @@ export function App() {
       setTitle((prevTitle) =>
         prevTitle
           .split("")
-          .map((_letter, index) => {
+          .map((_, index) => {
             if (index < iteration) {
               return INITIAL_TITLE[index];
             }
-            return LETTERS[Math.floor(Math.random() * 26)];
+            return LETTERS[Math.floor(Math.random() * LETTERS.length)];
           })
           .join(""),
       );
@@ -43,14 +44,21 @@ export function App() {
     }, 30);
   };
 
+  // Cleanup effect for interval
+  React.useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className={styles.app}>
-      {/** biome-ignore lint/a11y/useKeyWithClickEvents: No */}
       <h1 className={styles.title} onClick={onTitleHover}>
         {title}
       </h1>
-      <h2 className={styles.subtitle}>One of the websites of all time.</h2>
-      <h3>✨</h3>
+      <h2 className={styles.subtitle}>One of the {<MagicText text="websites" />} of all time.</h2>
     </div>
   );
 }
