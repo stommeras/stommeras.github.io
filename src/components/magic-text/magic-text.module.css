@@ -16,16 +16,12 @@
     display: block;
     opacity: 0.7;
     animation: rotate 1400ms linear infinite;
-
-    path {
-      fill: var(--blue);
-    }
   }
 }
 
 .magicText {
   animation: background-pan 3s linear infinite;
-  background: linear-gradient(to right, var(--dark-blue), var(--blue), var(--light-blue), var(--dark-blue));
+  background: linear-gradient(to right, var(--red), var(--orange), var(--yellow), var(--red));
   background-size: 200%;
   -webkit-background-clip: text;
   background-clip: text;

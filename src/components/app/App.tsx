@@ -1,9 +1,11 @@
 import * as React from "react";
+import { Broom } from "../icons/fall/Broom";
+import { Pumpkin } from "../icons/fall/Pumpkin";
 import { MagicText } from "../magic-text/MagicText";
 import styles from "./app.module.css";
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-export const INITIAL_TITLE = "TØMMERÅS";
+export const INITIAL_TITLE = "TOMMERÅS";
 
 export function App() {
   const [title, setTitle] = React.useState(INITIAL_TITLE);
@@ -57,6 +59,8 @@ export function App() {
     <div className={styles.app}>
       <h1 className={styles.title} onClick={onTitleHover}>
         {title}
+        <Broom className={styles.broom} />
+        <Pumpkin className={styles.pumpkin} />
       </h1>
       <h2 className={styles.subtitle}>One of the {<MagicText text="websites" />} of all time.</h2>
     </div>

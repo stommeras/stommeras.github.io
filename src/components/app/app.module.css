@@ -13,13 +13,22 @@
   position: relative;
   font-size: clamp(3rem, 10vw, 4rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
-  transition: all 0.1s ease-in-out;
   cursor: pointer;
+}
 
-  &:hover {
-    background-color: var(--white);
-    color: var(--black);
-  }
+.broom {
+  position: absolute;
+  width: 25%;
+  top: 15%;
+  left: 5%;
+  transform: rotate(10deg);
+}
+
+.pumpkin {
+  position: absolute;
+  width: 12%;
+  top: -5%;
+  right: 10.5%;
 }
 
 .subtitle {

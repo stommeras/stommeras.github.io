@@ -1,5 +1,8 @@
 import * as React from "react";
 import { rand } from "@/utils/math";
+import { Leaf1 } from "../icons/fall/Leaf1";
+import { Leaf2 } from "../icons/fall/Leaf2";
+import { Leaf3 } from "../icons/fall/Leaf3";
 import styles from "./magic-text.module.css";
 
 interface MagicTextProps {
@@ -11,6 +14,12 @@ const getRandomPosition = (): React.CSSProperties => ({
   top: `${rand(-40, 80)}%`,
   rotate: `${rand(0, 360)}deg`,
 });
+
+const leafMapping = {
+  0: <Leaf1 />,
+  1: <Leaf2 />,
+  2: <Leaf3 />,
+} as const;
 
 export function MagicText({ text }: MagicTextProps) {
   const [starPositions, setStarPositions] = React.useState(() => Array.from({ length: 3 }, () => getRandomPosition()));
@@ -33,7 +42,7 @@ export function MagicText({ text }: MagicTextProps) {
           style={position}
           onAnimationIteration={() => handleStarAnimationEnd(index)}
         >
-          {magicStar}
+          {leafMapping[index as keyof typeof leafMapping]}
         </span>
       ))}
       <span className={styles.magicText}>{text}</span>
@@ -41,8 +50,8 @@ export function MagicText({ text }: MagicTextProps) {
   );
 }
 
-const magicStar = (
-  <svg viewBox="0 0 512 512">
-    <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-  </svg>
-);
+// const magicStar = (
+//   <svg viewBox="0 0 512 512">
+//     <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+//   </svg>
+// );
