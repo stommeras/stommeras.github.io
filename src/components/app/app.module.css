@@ -16,14 +16,6 @@
   cursor: pointer;
 }
 
-.broom {
-  position: absolute;
-  width: 25%;
-  top: 15%;
-  left: 5%;
-  transform: rotate(10deg);
-}
-
 .pumpkin {
   position: absolute;
   width: 12%;
