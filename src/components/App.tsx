@@ -1,12 +1,42 @@
 import { animated } from "@react-spring/web";
 import * as React from "react";
+import styled from "styled-components";
 import { useBoop } from "@/hooks/useBoop";
-import { Pumpkin } from "../icons/fall/Pumpkin";
-import { MagicText } from "../magic-text/MagicText";
-import styles from "./app.module.css";
+import { Pumpkin } from "./icons/fall/Pumpkin";
+import { MagicText } from "./MagicText";
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const INITIAL_TITLE = "TØMMERÅS";
+
+const AppContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-style: italic;
+  padding: 0rem clamp(1rem, 2vw, 3rem);
+`;
+
+const Title = styled.h1`
+  position: relative;
+  font-size: clamp(3rem, 10vw, 4rem);
+  border-radius: clamp(0.4rem, 0.75vw, 1rem);
+  cursor: pointer;
+`;
+
+const PumpkinContainer = styled(animated.span)`
+  position: absolute;
+  width: 12%;
+  top: -5%;
+  right: 10.5%;
+`;
+
+const Subtitle = styled.h2`
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  text-align: center;
+`;
 
 export function App() {
   const [title, setTitle] = React.useState(INITIAL_TITLE);
@@ -60,14 +90,14 @@ export function App() {
   }, []);
 
   return (
-    <div className={styles.app}>
-      <h1 className={styles.title} onMouseEnter={onTitleHover}>
+    <AppContainer>
+      <Title onMouseEnter={onTitleHover} onTouchStart={onTitleHover}>
         {title}
-        <animated.span style={style} className={styles.pumpkin}>
+        <PumpkinContainer style={style}>
           <Pumpkin />
-        </animated.span>
-      </h1>
-      <h2 className={styles.subtitle}>One of the {<MagicText text="websites" />} of all time.</h2>
-    </div>
+        </PumpkinContainer>
+      </Title>
+      <Subtitle>One of the {<MagicText text="websites" />} of all time.</Subtitle>
+    </AppContainer>
   );
 }

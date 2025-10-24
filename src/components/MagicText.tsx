@@ -1,13 +1,72 @@
 import * as React from "react";
+import styled, { keyframes } from "styled-components";
+import { theme } from "@/constants";
 import { rand } from "@/utils/math";
-import { Leaf1 } from "../icons/fall/Leaf1";
-import { Leaf2 } from "../icons/fall/Leaf2";
-import { Leaf3 } from "../icons/fall/Leaf3";
-import styles from "./magic-text.module.css";
+import { Leaf1 } from "./icons/fall/Leaf1";
+import { Leaf2 } from "./icons/fall/Leaf2";
+import { Leaf3 } from "./icons/fall/Leaf3";
 
 interface MagicTextProps {
   text: string;
 }
+
+const backgroundPan = keyframes`
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+`;
+
+const scale = keyframes`
+  from, to {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const MagicContainer = styled.span`
+  position: relative;
+  display: inline-block;
+`;
+
+const MagicStar = styled.span`
+  --size: clamp(20px, 1.5vw, 30px);
+
+  display: block;
+  position: absolute;
+  height: var(--size);
+  width: var(--size);
+  animation: ${scale} 700ms ease infinite;
+
+  svg {
+    display: block;
+    opacity: 0.7;
+    animation: ${rotate} 1400ms linear infinite;
+  }
+`;
+
+const MagicTextSpan = styled.span`
+  animation: ${backgroundPan} 3s linear infinite;
+  background: linear-gradient(to right, ${theme.colors.red}, ${theme.colors.darkOrange}, ${theme.colors.orange}, ${theme.colors.red});
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+`;
 
 const getRandomPosition = (): React.CSSProperties => ({
   left: `${rand(-10, 100)}%`,
@@ -33,20 +92,19 @@ export function MagicText({ text }: MagicTextProps) {
   };
 
   return (
-    <span className={styles.magic}>
+    <MagicContainer>
       {starPositions.map((position, index) => (
-        <span
-          className={styles.magicStar}
+        <MagicStar
           // biome-ignore lint/suspicious/noArrayIndexKey: No
           key={index}
           style={position}
           onAnimationIteration={() => handleStarAnimationEnd(index)}
         >
           {leafMapping[index as keyof typeof leafMapping]}
-        </span>
+        </MagicStar>
       ))}
-      <span className={styles.magicText}>{text}</span>
-    </span>
+      <MagicTextSpan>{text}</MagicTextSpan>
+    </MagicContainer>
   );
 }
 
