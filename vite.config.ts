@@ -1,14 +1,16 @@
 import { defineConfig } from 'vite'
 import viteReact from '@vitejs/plugin-react'
 
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import { resolve } from 'node:path'
+import { themeScriptPlugin } from './plugins/vite-plugin-theme-script'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    TanStackRouterVite({ autoCodeSplitting: true }),
+    tanstackRouter({ target: "react", autoCodeSplitting: true }),
     viteReact(),
+    themeScriptPlugin(),
   ],
   resolve: {
     alias: {

@@ -1,7 +1,7 @@
 export const Pumpkin = () => (
   <svg
     viewBox="0 0 400 400"
-    fill="var(--orange)"
+    fill="#d87829"
     stroke="#000"
     strokeWidth="16"
     strokeLinecap="round"
