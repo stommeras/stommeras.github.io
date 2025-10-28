@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-text: hsl(0deg, 0%, 10%);
+  --color-background: hsl(0deg, 0%, 90%);
+  --color-gray: hsl(0deg, 0%, 20%);
+  --color-red: hsl(350deg, 72%, 44%);
+  --color-orange: hsl(27deg, 69%, 50%);
+  --color-yellow: hsl(51deg, 74%, 48%);
+  --color-darkOrange: hsl(19deg, 76%, 36%);
+  --color-brown: hsl(18deg, 87%, 15%);
+
+  --animate-scale: scale 700ms ease infinite;
+  --animate-rotate: rotate 1400ms linear infinite;
+  --animate-background-pan: background-pan 3s linear infinite;
+
+  @keyframes scale {
+    from,
+    to {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes background-pan {
+    from {
+      background-position: 0% center;
+    }
+    to {
+      background-position: -200% center;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  @theme {
+    --color-text: hsl(0deg, 0%, 90%);
+    --color-background: hsl(0deg, 0%, 10%);
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root {
+  isolation: isolate;
+  /* Forces stacking context to start fresh. */
+}

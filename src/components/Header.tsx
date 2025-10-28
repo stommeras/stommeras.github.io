@@ -1,20 +1,9 @@
-import styled from "styled-components";
-import { DarkToggle } from "./DarkToggle";
-
-const HeaderContainer = styled.header`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding: clamp(1rem, 2vw, 3rem) clamp(1rem, 2vw, 3rem);
-  z-index: 100;
-`;
+import { DarkToggle } from './DarkToggle';
 
 export function Header() {
   return (
-    <HeaderContainer>
+    <header className="fixed top-0 z-100 flex w-full justify-end p-1">
       <DarkToggle />
-    </HeaderContainer>
+    </header>
   );
 }

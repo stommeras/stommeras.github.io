@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import React from 'react';
 
-export const Title = styled.h1`
-  position: relative;
-  font-size: clamp(3rem, 10vw, 4rem);
-  border-radius: clamp(0.4rem, 0.75vw, 1rem);
-  cursor: pointer;
-`;
+export const Title = ({ children, className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h1 className={`text-center text-4xl md:text-6xl ${className}`} {...props}>
+    {children}
+  </h1>
+);
 
-export const Subtitle = styled.h2`
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  text-align: center;
-`;
+export const Subtitle = ({ children, className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h2 className={`text-center text-2xl md:text-4xl ${className}`} {...props}>
+    {children}
+  </h2>
+);

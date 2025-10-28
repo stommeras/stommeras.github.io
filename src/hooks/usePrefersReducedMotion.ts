@@ -1,12 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface MediaQueryListEvent {
   matches: boolean;
 }
 
-const QUERY: string = "(prefers-reduced-motion: no-preference)";
+const QUERY: string = '(prefers-reduced-motion: no-preference)';
 
-const isRenderingOnServer: boolean = typeof window === "undefined";
+const isRenderingOnServer: boolean = typeof window === 'undefined';
 
 const getInitialState = (): boolean => {
   // For our initial server render, we won't know if the user
@@ -28,13 +28,13 @@ export function usePrefersReducedMotion(): boolean {
     };
 
     if (mediaQueryList.addEventListener) {
-      mediaQueryList.addEventListener("change", listener);
+      mediaQueryList.addEventListener('change', listener);
     } else {
       mediaQueryList.addListener(listener);
     }
     return () => {
       if (mediaQueryList.removeEventListener) {
-        mediaQueryList.removeEventListener("change", listener);
+        mediaQueryList.removeEventListener('change', listener);
       } else {
         mediaQueryList.removeListener(listener);
       }

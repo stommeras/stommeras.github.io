@@ -1,36 +1,35 @@
-import { Toggle } from "@base-ui-components/react";
-import { animated } from "@react-spring/web";
-import styled from "styled-components";
-import { useBoop } from "@/hooks/useBoop";
-import { useTheme } from "@/stores/themeStore";
+'use client';
 
-const ToggleButton = styled(animated.button)`
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  padding: 0.25rem;
-  aspect-ratio: 1 / 1;
-`;
+import { Toggle } from '@base-ui-components/react';
+import { animated } from '@react-spring/web';
+import { useBoop } from '@/hooks/useBoop';
+import { useTheme } from 'next-themes';
 
 export const DarkToggle = () => {
-  const { colorMode, setColorMode } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [style, trigger] = useBoop({ scale: 1.1, rotation: 15 });
 
-  if (!colorMode) {
+  console.log('Current theme:', theme);
+
+  // Don't render on server or if theme is not ready
+  if (!theme) {
     return null;
   }
 
   return (
     <Toggle
-      pressed={colorMode === "dark"}
+      pressed={theme === 'dark'}
       onPressedChange={(pressed) => {
-        setColorMode(pressed ? "dark" : "light");
+        setTheme(pressed ? 'dark' : 'light');
       }}
       style={style}
       onClick={trigger}
       render={(props, state) => {
-        return <ToggleButton {...props}>{state.pressed ? "☀️" : "🌑"}</ToggleButton>;
+        return (
+          <animated.button {...props} className="aspect-square cursor-pointer border-none bg-transparent p-1 text-2xl">
+            {state.pressed ? '☀️' : '🌑'}
+          </animated.button>
+        );
       }}
     />
   );

@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import React from 'react';
 
-export const PageContainer = styled.div`
-  display: flex;
-  flex: 1 1 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 0rem clamp(1rem, 2vw, 3rem);
-`;
+interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+}
+
+export const PageContainer: React.FC<PageContainerProps> = ({ children, className = '', ...props }) => (
+  <div className={`flex flex-1 flex-col items-center justify-center gap-8 p-4 ${className}`} {...props}>
+    {children}
+  </div>
+);

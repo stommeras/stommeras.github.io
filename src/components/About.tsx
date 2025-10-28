@@ -1,18 +1,11 @@
-import styled from "styled-components";
-import { DecryptedText } from "./DecryptedText";
-import { PageContainer, Subtitle } from "./ui";
-
-const TextContainer = styled.p`
-  max-width: 800px;
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  text-align: left;
-`;
+import { DecryptedText } from './DecryptedText';
+import { PageContainer, Subtitle } from './ui';
 
 export const About = () => {
   return (
     <PageContainer>
       <Subtitle>Lorem Ipsum</Subtitle>
-      <TextContainer>
+      <p className="max-w-[800px] text-left">
         <DecryptedText
           animateOn="view"
           speed={15}
@@ -48,7 +41,7 @@ export const About = () => {
           sequential
           text="Dolor sit amet Lorem nostrud velit. Ad dolor est ipsum pariatur voluptate proident culpa tempor laborum occaecat in ipsum."
         />
-      </TextContainer>
+      </p>
     </PageContainer>
   );
 };

@@ -1,21 +1,11 @@
-import styled from "styled-components";
-import { About } from "./About";
-import { Landing } from "./Landing";
-
-const AppContainer = styled.div`
-  height: 200vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  `;
+import { About } from './About';
+import { Landing } from './Landing';
 
 export function App() {
   return (
-    <AppContainer>
+    <div className="flex h-[200vh] w-full flex-col items-center justify-center">
       <Landing />
       <About />
-    </AppContainer>
+    </div>
   );
 }
