@@ -1,6 +1,7 @@
+import { Header } from '@/components/Header';
 import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 import { Cascadia_Mono } from 'next/font/google';
-import { ThemeProvider } from '../components/ThemeProvider';
 import './globals.css';
 
 const cascadiaMono = Cascadia_Mono({
@@ -20,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${cascadiaMono.className} antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider attribute="data-mode">
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

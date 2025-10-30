@@ -1,7 +1,7 @@
 'use client';
 
-import { animated } from '@react-spring/web';
 import { useBoop } from '@/hooks/useBoop';
+import { animated } from '@react-spring/web';
 import { DecryptedText } from './DecryptedText';
 import { Pumpkin } from './icons/fall/Pumpkin';
 import { MagicText } from './MagicText';

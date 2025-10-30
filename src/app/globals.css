@@ -1,15 +1,6 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-text: hsl(0deg, 0%, 10%);
-  --color-background: hsl(0deg, 0%, 90%);
-  --color-gray: hsl(0deg, 0%, 20%);
-  --color-red: hsl(350deg, 72%, 44%);
-  --color-orange: hsl(27deg, 69%, 50%);
-  --color-yellow: hsl(51deg, 74%, 48%);
-  --color-darkOrange: hsl(19deg, 76%, 36%);
-  --color-brown: hsl(18deg, 87%, 15%);
-
   --animate-scale: scale 700ms ease infinite;
   --animate-rotate: rotate 1400ms linear infinite;
   --animate-background-pan: background-pan 3s linear infinite;
@@ -43,11 +34,14 @@
   }
 }
 
-[data-theme='dark'] {
-  @theme {
-    --color-text: hsl(0deg, 0%, 90%);
-    --color-background: hsl(0deg, 0%, 10%);
-  }
+:root {
+  --color-text: hsl(0deg, 0%, 10%);
+  --color-background: hsl(0deg, 0%, 90%);
+}
+
+[data-mode='dark'] {
+  --color-text: hsl(0deg, 0%, 90%);
+  --color-background: hsl(0deg, 0%, 10%);
 }
 
 body {
@@ -58,6 +52,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--color-background);
   color: var(--color-text);
+  transition:
+    color,
+    background 0.3s ease;
 }
 
 *,

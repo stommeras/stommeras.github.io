@@ -4,15 +4,22 @@ import { Toggle } from '@base-ui-components/react';
 import { animated } from '@react-spring/web';
 import { useBoop } from '@/hooks/useBoop';
 import { useTheme } from 'next-themes';
+import React from 'react';
 
 export const DarkToggle = () => {
-  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+  const { theme, setTheme, resolvedTheme, themes } = useTheme();
   const [style, trigger] = useBoop({ scale: 1.1, rotation: 15 });
 
   console.log('Current theme:', theme);
+  console.log('Debug theme info:', { theme, resolvedTheme, themes, mounted });
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Don't render on server or if theme is not ready
-  if (!theme) {
+  if (!mounted) {
     return null;
   }
 

@@ -1,8 +1,7 @@
 'use client';
 
-import * as React from 'react';
-import { theme } from '@/constants';
 import { rand } from '@/utils/math';
+import * as React from 'react';
 import { Leaf1 } from './icons/fall/Leaf1';
 import { Leaf2 } from './icons/fall/Leaf2';
 import { Leaf3 } from './icons/fall/Leaf3';
@@ -56,13 +55,7 @@ export function MagicText({ text }: MagicTextProps) {
             <span className="animate-rotate block opacity-70">{leafMapping[index as keyof typeof leafMapping]}</span>
           </span>
         ))}
-      <span
-        className="animate-background-pan from-red via-orange to-yellow bg-linear-to-r bg-size-[200%] bg-clip-text whitespace-nowrap text-transparent"
-        style={{
-          backgroundImage: `linear-gradient(to right, ${theme.colors.red}, ${theme.colors.darkOrange}, ${theme.colors.orange}, ${theme.colors.red})`,
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-        }}>
+      <span className="animate-background-pan bg-linear-to-r from-red-600 via-amber-300 to-red-600 bg-size-[200%] bg-clip-text whitespace-nowrap text-transparent">
         {text}
       </span>
     </span>
