@@ -1,7 +1,6 @@
-import { DecryptedText } from './DecryptedText';
-import { PageContainer, Subtitle } from './ui';
+import { DecryptedText, PageContainer, Subtitle } from '@/components/ui';
 
-export const About = () => {
+export function About() {
   return (
     <PageContainer>
       <Subtitle>Lorem Ipsum</Subtitle>
@@ -44,4 +43,4 @@ export const About = () => {
       </p>
     </PageContainer>
   );
-};
+}

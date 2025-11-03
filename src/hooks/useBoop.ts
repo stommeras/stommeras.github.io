@@ -1,6 +1,6 @@
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { useSpring } from '@react-spring/web';
 import * as React from 'react';
-import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 
 export interface BoopConfig {
   x?: number;

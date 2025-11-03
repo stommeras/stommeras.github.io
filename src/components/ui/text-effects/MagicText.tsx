@@ -1,10 +1,10 @@
 'use client';
 
+import { Leaf1 } from '@/components/icons/fall/Leaf1';
+import { Leaf2 } from '@/components/icons/fall/Leaf2';
+import { Leaf3 } from '@/components/icons/fall/Leaf3';
 import { rand } from '@/utils/math';
 import * as React from 'react';
-import { Leaf1 } from './icons/fall/Leaf1';
-import { Leaf2 } from './icons/fall/Leaf2';
-import { Leaf3 } from './icons/fall/Leaf3';
 
 interface MagicTextProps {
   text: string;

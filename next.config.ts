@@ -1,10 +1,16 @@
 import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
   output: 'export',
   reactStrictMode: true,
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
+  experimental: {
+    viewTransition: true,
+  },
 };
 
 export default nextConfig;

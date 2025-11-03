@@ -6,7 +6,7 @@ import { animated } from '@react-spring/web';
 import { useTheme } from 'next-themes';
 import React from 'react';
 
-export const DarkToggle = () => {
+export function DarkToggle() {
   const [mounted, setMounted] = React.useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const [style, trigger] = useBoop({ scale: 1.1, rotation: 15 });
@@ -29,12 +29,17 @@ export const DarkToggle = () => {
       style={style}
       onClick={trigger}
       render={(props, state) => {
+        const themeLabel = state.pressed ? 'Switch to light mode' : 'Switch to dark mode';
         return (
-          <animated.button {...props} className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl">
+          <animated.button
+            {...props}
+            className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl"
+            aria-label={themeLabel}
+            title={themeLabel}>
             {state.pressed ? '🌑' : '☀️'}
           </animated.button>
         );
       }}
     />
   );
-};
+}

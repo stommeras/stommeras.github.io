@@ -1,4 +1,4 @@
-import { DarkToggle } from './DarkToggle';
+import { DarkToggle } from '@/components/layout/header/DarkToggle';
 
 export function Header() {
   return (

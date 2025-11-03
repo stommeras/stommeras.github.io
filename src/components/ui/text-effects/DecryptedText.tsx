@@ -95,7 +95,11 @@ export function DecryptedText({
 
         for (let i = nonSpaceChars.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          [nonSpaceChars[i], nonSpaceChars[j]] = [nonSpaceChars[j], nonSpaceChars[i]];
+          const charI = nonSpaceChars[i];
+          const charJ = nonSpaceChars[j];
+          if (charI !== undefined && charJ !== undefined) {
+            [nonSpaceChars[i], nonSpaceChars[j]] = [charJ, charI];
+          }
         }
 
         let charIndex = 0;
