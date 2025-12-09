@@ -63,12 +63,9 @@ export { Title, Subtitle } from './Typography';
 export * from './text-effects';
 ```
 
-### Hydration Safety
-
-See `DarkToggle.tsx` for the pattern: always check `mounted` state before rendering theme-dependent content to avoid hydration mismatches.
-
 ### Custom Hooks Pattern
 
+- `useIsClient`: Detects client-side rendering
 - `useBoop`: Trigger-based spring animation with reduced-motion support
 - `usePrefersReducedMotion`: Accessibility hook respecting user motion preferences
 
@@ -122,7 +119,6 @@ turbopack.root: __dirname     // Turbopack bundler
 
 ## Common Gotchas
 
-- **Hydration**: Theme-dependent rendering requires mount check (see `DarkToggle`)
 - **Motion**: Text effects like `DecryptedText` have complex state management - review existing implementation before modifying
 - **Static export**: No dynamic routes with `[param]` syntax without `generateStaticParams`
 - **Tailwind v4**: Uses `@import 'tailwindcss'` and `@theme` instead of v3's `@tailwind` directives

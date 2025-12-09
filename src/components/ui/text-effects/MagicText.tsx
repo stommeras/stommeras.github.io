@@ -1,7 +1,8 @@
 'use client';
 
+import { useIsClient } from '@/hooks/useIsClient';
 import { rand } from '@/utils/math';
-import { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, useState } from 'react';
 
 interface MagicTextProps {
   text: string;
@@ -23,15 +24,11 @@ export function MagicText({ text }: MagicTextProps) {
   const [iconPositions, setIconPositions] = useState<CSSProperties[]>(() =>
     Array.from({ length: 3 }, () => getRandomPosition())
   );
-  const [isHydrated, setIsHydrated] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsHydrated(true), 0);
-    return () => clearTimeout(timer);
-  }, []);
+  const isClient = useIsClient();
 
   const handleIconAnimationEnd = (index: number) => {
-    if (!isHydrated) return;
+    if (!isClient) return;
 
     setIconPositions((prev) => {
       const newPositions = [...prev];
@@ -42,7 +39,7 @@ export function MagicText({ text }: MagicTextProps) {
 
   return (
     <span className="relative inline-block">
-      {isHydrated &&
+      {isClient &&
         iconPositions.map((position, index) => (
           <span
             key={index}

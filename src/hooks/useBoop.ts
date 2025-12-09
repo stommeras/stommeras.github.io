@@ -1,3 +1,4 @@
+import { useIsClient } from '@/hooks/useIsClient';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { useSpring } from '@react-spring/web';
 import { useCallback, useEffect, useState } from 'react';
@@ -27,8 +28,8 @@ export function useBoop({
   },
 }: BoopConfig) {
   const prefersReducedMotion = usePrefersReducedMotion();
-
   const [isBooped, setIsBooped] = useState(false);
+  const isClient = useIsClient();
 
   const style = useSpring({
     transform: isBooped
@@ -59,7 +60,7 @@ export function useBoop({
     setIsBooped(true);
   }, []);
 
-  const appliedStyle = prefersReducedMotion ? {} : style;
+  const appliedStyle = prefersReducedMotion || !isClient ? {} : style;
 
   return [appliedStyle, trigger] as const;
 }
