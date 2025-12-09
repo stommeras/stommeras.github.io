@@ -16,7 +16,6 @@ export function DarkToggle() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Don't render on server or if theme is not ready
   if (!mounted) {
     return null;
   }

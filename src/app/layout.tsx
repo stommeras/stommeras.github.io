@@ -4,6 +4,7 @@ import { ConsoleArt } from '@/ConsoleArt';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Cascadia_Code } from 'next/font/google';
+import { ViewTransition } from 'react';
 
 const cascadiaCode = Cascadia_Code({
   subsets: ['latin'],
@@ -52,9 +53,11 @@ export default function RootLayout({
         </a>
         <ThemeProvider attribute="data-mode">
           <Header />
-          <main id="main-content" className="h-screen w-full">
-            {children}
-          </main>
+          <ViewTransition>
+            <main id="main-content" className="h-screen w-full">
+              {children}
+            </main>
+          </ViewTransition>
         </ThemeProvider>
       </body>
     </html>
