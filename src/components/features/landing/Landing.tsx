@@ -5,7 +5,7 @@ import { PageContainer } from '@/components/ui';
 
 export function Landing() {
   return (
-    <PageContainer className="relative italic">
+    <PageContainer className="relative h-full italic">
       <LandingBackground />
       <LandingTitle />
       <LandingSubtitle />

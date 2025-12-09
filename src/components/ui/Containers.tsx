@@ -5,7 +5,7 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const PageContainer: React.FC<PageContainerProps> = ({ children, className = '', ...props }) => (
-  <div className={`flex w-full flex-1 flex-col items-center justify-center gap-8 p-4 ${className}`} {...props}>
+  <div className={`flex h-full w-full flex-1 flex-col items-center justify-center gap-8 p-4 ${className}`} {...props}>
     {children}
   </div>
 );

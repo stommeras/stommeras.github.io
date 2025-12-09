@@ -3,9 +3,9 @@ import { Header } from '@/components/layout/header/Header';
 import { ConsoleArt } from '@/ConsoleArt';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
-import { Cascadia_Mono } from 'next/font/google';
+import { Cascadia_Code } from 'next/font/google';
 
-const cascadiaMono = Cascadia_Mono({
+const cascadiaCode = Cascadia_Code({
   subsets: ['latin'],
   fallback: [
     'ui-monospace',
@@ -17,7 +17,6 @@ const cascadiaMono = Cascadia_Mono({
     'Courier New',
     'monospace',
   ],
-  display: 'swap',
   adjustFontFallback: false,
 });
 
@@ -44,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${cascadiaMono.className} antialiased`}>
+      <body className={`${cascadiaCode.className} antialiased`}>
         <ConsoleArt />
         <a
           href="#main-content"
@@ -53,7 +52,9 @@ export default function RootLayout({
         </a>
         <ThemeProvider attribute="data-mode">
           <Header />
-          {children}
+          <main id="main-content" className="h-screen w-full">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

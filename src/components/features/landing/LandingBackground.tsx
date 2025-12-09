@@ -17,12 +17,7 @@ export function LandingBackground() {
 
   return (
     <React.Activity mode={mounted ? 'visible' : 'hidden'}>
-      <DotGrid
-        className="absolute top-0 -z-10 [-webkit-mask:linear-gradient(to_bottom,black_80%,transparent_100%)] [mask:linear-gradient(to_bottom,black_80%,transparent_100%)]"
-        baseColor={dotColor.base}
-        activeColor={dotColor.active}
-        dotSize={4}
-      />
+      <DotGrid className="absolute top-0 -z-10" baseColor={dotColor.base} activeColor={dotColor.active} dotSize={4} />
     </React.Activity>
   );
 }
