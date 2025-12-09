@@ -1,13 +1,13 @@
 'use client';
 
 import { rand } from '@/utils/math';
-import * as React from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 
 interface MagicTextProps {
   text: string;
 }
 
-const getRandomPosition = (): React.CSSProperties => ({
+const getRandomPosition = (): CSSProperties => ({
   left: `${rand(-10, 100)}%`,
   top: `${rand(-40, 80)}%`,
   rotate: `${rand(0, 360)}deg`,
@@ -20,14 +20,14 @@ const iconMapping = {
 } as const;
 
 export function MagicText({ text }: MagicTextProps) {
-  const [iconPositions, setIconPositions] = React.useState<React.CSSProperties[]>(() =>
-    Array.from({ length: 3 }, () => ({ left: '0%', top: '0%', rotate: '0deg' }))
+  const [iconPositions, setIconPositions] = useState<CSSProperties[]>(() =>
+    Array.from({ length: 3 }, () => getRandomPosition())
   );
-  const [isHydrated, setIsHydrated] = React.useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
-  React.useEffect(() => {
-    setIsHydrated(true);
-    setIconPositions(Array.from({ length: 3 }, () => getRandomPosition()));
+  useEffect(() => {
+    const timer = setTimeout(() => setIsHydrated(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleIconAnimationEnd = (index: number) => {

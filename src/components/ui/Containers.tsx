@@ -1,11 +1,13 @@
-import React from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
-interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+interface PageContainerProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode;
 }
 
-export const PageContainer: React.FC<PageContainerProps> = ({ children, className = '', ...props }) => (
-  <div className={`flex h-full w-full flex-1 flex-col items-center justify-center gap-8 p-4 ${className}`} {...props}>
-    {children}
-  </div>
-);
+export function PageContainer({ children, className = '', ...props }: PageContainerProps) {
+  return (
+    <div className={`flex h-full w-full flex-1 flex-col items-center justify-center gap-8 p-4 ${className}`} {...props}>
+      {children}
+    </div>
+  );
+}
