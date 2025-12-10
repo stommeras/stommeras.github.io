@@ -1,5 +1,5 @@
-import { PageContainer } from '@/components/ui';
+import { Contact } from '@/components/features/contact';
 
-export default function Contact() {
-  return <PageContainer className="text-4xl">Contact</PageContainer>;
+export default function ContactPage() {
+  return <Contact />;
 }

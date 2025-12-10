@@ -29,8 +29,7 @@ src/
 ### Styling & Theme System
 
 - **Tailwind v4** with custom CSS variables in `@theme` directive (`globals.css`)
-- Dark mode via `next-themes` using `data-mode` attribute selector: `[data-mode='dark']` (configured in `tailwind.config.ts`)
-- Theme colors defined as CSS custom properties: `--color-text`, `--color-background`
+- Dark mode via `next-themes` using `data-mode` attribute selector: `dark:` (configured in `tailwind.config.ts`)
 - Typography: Cascadia Mono (Google Fonts) loaded in root layout with extensive fallback stack
 
 ### Animation Libraries

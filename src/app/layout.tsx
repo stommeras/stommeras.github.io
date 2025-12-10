@@ -1,5 +1,6 @@
 import '@/app/globals.css';
 import { Header } from '@/components/layout/header/Header';
+import { ToastProvider } from '@/components/ui';
 import { ConsoleArt } from '@/ConsoleArt';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
@@ -52,12 +53,14 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ThemeProvider attribute="data-mode">
-          <Header />
-          <ViewTransition>
-            <main id="main-content" className="h-screen w-full">
-              {children}
-            </main>
-          </ViewTransition>
+          <ToastProvider>
+            <Header />
+            <ViewTransition>
+              <main id="main-content" className="flex h-screen w-full justify-center">
+                {children}
+              </main>
+            </ViewTransition>
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>
