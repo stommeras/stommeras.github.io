@@ -17,7 +17,7 @@ export function Header() {
   };
 
   return (
-    <header className="bg-background/80 fixed top-0 z-100 w-full backdrop-blur-sm">
+    <header className="fixed top-0 z-100 w-full backdrop-blur-sm">
       <div className="flex items-center justify-between p-4">
         <NavLinks className="hidden md:flex md:gap-6" />
         <MobileMenuToggle isOpen={isMobileMenuOpen} onToggle={handleMobileMenuToggle} />

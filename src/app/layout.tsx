@@ -1,6 +1,6 @@
 import '@/app/globals.css';
 import { Header } from '@/components/layout/header/Header';
-import { ToastProvider } from '@/components/ui';
+import { Toaster } from '@/components/ui/sonner';
 import { ConsoleArt } from '@/ConsoleArt';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
@@ -45,22 +45,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${cascadiaCode.className} antialiased`}>
+      <body className={`${cascadiaCode.className} bg-card text-card-foreground antialiased`}>
         <ConsoleArt />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none">
           Skip to main content
         </a>
-        <ThemeProvider attribute="data-mode">
-          <ToastProvider>
-            <Header />
-            <ViewTransition>
-              <main id="main-content" className="flex h-screen w-full justify-center">
-                {children}
-              </main>
-            </ViewTransition>
-          </ToastProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <Header />
+          <ViewTransition>
+            <main id="main-content" className="flex h-screen w-full justify-center">
+              {children}
+            </main>
+            <Toaster />
+          </ViewTransition>
         </ThemeProvider>
       </body>
     </html>

@@ -10,7 +10,6 @@ interface NavLinksProps {
 
 const links = [
   { href: '/', label: 'Tømmerås', isBrand: true },
-  { href: '/projects', label: 'Projects', isBrand: false },
   { href: '/about', label: 'About', isBrand: false },
   { href: '/contact', label: 'Contact', isBrand: false },
 ];

@@ -1,9 +1,10 @@
 'use client';
 
+import { Toggle } from '@/components/ui/toggle';
 import { useBoop } from '@/hooks/useBoop';
 import { useIsClient } from '@/hooks/useIsClient';
-import { Toggle } from '@base-ui-components/react';
 import { animated } from '@react-spring/web';
+import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 export function DarkToggle() {
@@ -16,25 +17,18 @@ export function DarkToggle() {
   }
 
   return (
-    <Toggle
-      pressed={resolvedTheme === 'dark'}
-      onPressedChange={(pressed) => {
-        setTheme(pressed ? 'dark' : 'light');
-      }}
-      style={style}
-      onClick={trigger}
-      render={(props, state) => {
-        const themeLabel = state.pressed ? 'Switch to light mode' : 'Switch to dark mode';
-        return (
-          <animated.button
-            {...props}
-            className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl"
-            aria-label={themeLabel}
-            title={themeLabel}>
-            {state.pressed ? '🌑' : '☀️'}
-          </animated.button>
-        );
-      }}
-    />
+    <animated.div
+      className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl"
+      aria-label={resolvedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
+      <Toggle
+        pressed={resolvedTheme === 'dark'}
+        onPressedChange={(pressed) => {
+          setTheme(pressed ? 'dark' : 'light');
+        }}
+        style={style}
+        onClick={trigger}>
+        {resolvedTheme === 'dark' ? <Moon /> : <Sun />}
+      </Toggle>
+    </animated.div>
   );
 }
