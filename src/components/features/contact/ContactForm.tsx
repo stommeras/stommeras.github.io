@@ -10,8 +10,8 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from '@/components/ui/input-group';
+import { useFormSubmit } from '@/hooks/useFormSubmit';
 import { revalidateLogic, useForm } from '@tanstack/react-form';
-import { toast } from 'sonner';
 import { z } from 'zod';
 
 export const contactFormSchema = z.object({
@@ -33,10 +33,12 @@ const defaultValues: ContactFormData = {
 };
 
 export function ContactForm() {
+  const { isPending, mutate } = useFormSubmit();
+
   const form = useForm({
     defaultValues,
     onSubmit: ({ value: formValues }) => {
-      toast.success('Message sent!', { description: JSON.stringify(formValues) });
+      mutate(formValues);
     },
     validationLogic: revalidateLogic({
       mode: 'blur',
@@ -136,8 +138,8 @@ export function ContactForm() {
           }}
         />
       </FieldGroup>
-      <Button type="submit" className="bg-primary text-secondary max-w-fit" variant="outline">
-        Send Message
+      <Button type="submit" className="bg-primary text-secondary max-w-fit" variant="outline" disabled={isPending}>
+        {isPending ? 'Sending...' : 'Send Message'}
       </Button>
     </form>
   );
