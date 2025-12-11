@@ -1,5 +1,6 @@
 'use client';
 
+import { useIsClient } from '@/hooks/useIsClient';
 import { type HTMLMotionProps, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -35,17 +36,13 @@ export function DecryptedText({
   const [isScrambling, setIsScrambling] = useState<boolean>(false);
   const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set());
   const [hasAnimated, setHasAnimated] = useState<boolean>(false);
-  const [isHydrated, setIsHydrated] = useState<boolean>(false);
+  const isClient = useIsClient();
   const containerRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (!isHydrated || !isAnimating) {
+    if (!isClient || !isAnimating) {
       return;
     }
 
@@ -169,7 +166,7 @@ export function DecryptedText({
       if (interval) clearInterval(interval);
     };
   }, [
-    isHydrated,
+    isClient,
     isAnimating,
     text,
     speed,

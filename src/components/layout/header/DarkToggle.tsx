@@ -1,45 +1,38 @@
 'use client';
 
+import { Toggle } from '@/components/ui/toggle';
 import { useBoop } from '@/hooks/useBoop';
-import { Toggle } from '@base-ui-components/react';
+import { useIsClient } from '@/hooks/useIsClient';
 import { animated } from '@react-spring/web';
+import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import React from 'react';
 
 export function DarkToggle() {
-  const [mounted, setMounted] = React.useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const [style, trigger] = useBoop({ scale: 1.1, rotation: 15 });
+  const [containerStyle, containerTrigger] = useBoop({ scale: 1.1 });
+  const [iconStyle, iconTrigger] = useBoop({ scale: 1.1, rotation: 15 });
+  const isClient = useIsClient();
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Don't render on server or if theme is not ready
-  if (!mounted) {
+  if (!isClient) {
     return null;
   }
 
   return (
-    <Toggle
-      pressed={resolvedTheme === 'dark'}
-      onPressedChange={(pressed) => {
-        setTheme(pressed ? 'dark' : 'light');
-      }}
-      style={style}
-      onClick={trigger}
-      render={(props, state) => {
-        const themeLabel = state.pressed ? 'Switch to light mode' : 'Switch to dark mode';
-        return (
-          <animated.button
-            {...props}
-            className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl"
-            aria-label={themeLabel}
-            title={themeLabel}>
-            {state.pressed ? '🌑' : '☀️'}
-          </animated.button>
-        );
-      }}
-    />
+    <animated.div
+      className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl"
+      aria-label={resolvedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      style={containerStyle}>
+      <Toggle
+        pressed={resolvedTheme === 'dark'}
+        onPressedChange={(pressed) => {
+          setTheme(pressed ? 'dark' : 'light');
+        }}
+        onClick={() => {
+          iconTrigger();
+          containerTrigger();
+        }}>
+        <animated.div style={iconStyle}>{resolvedTheme === 'dark' ? <Moon /> : <Sun />}</animated.div>
+      </Toggle>
+    </animated.div>
   );
 }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 
 interface MediaQueryListEvent {
   matches: boolean;
@@ -8,13 +8,16 @@ const QUERY: string = '(prefers-reduced-motion: no-preference)';
 
 // Source here: https://joshwcomeau.com/snippets/react-hooks/use-prefers-reduced-motion
 export function usePrefersReducedMotion(): boolean {
-  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState<boolean>(true);
-
-  React.useEffect(() => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
+    if (typeof window === 'undefined') {
+      return true;
+    }
     const mediaQueryList: MediaQueryList = window.matchMedia(QUERY);
+    return !mediaQueryList.matches;
+  });
 
-    // Set the initial client-side value
-    setPrefersReducedMotion(!mediaQueryList.matches);
+  useEffect(() => {
+    const mediaQueryList: MediaQueryList = window.matchMedia(QUERY);
 
     const listener = (event: MediaQueryListEvent): void => {
       setPrefersReducedMotion(!event.matches);

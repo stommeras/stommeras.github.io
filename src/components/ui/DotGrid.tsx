@@ -50,7 +50,7 @@ function hexToRgb(hex: string) {
   };
 }
 
-const DotGrid: React.FC<DotGridProps> = ({
+export function DotGrid({
   dotSize = 16,
   gap = 32,
   baseColor = '#5227FF',
@@ -64,7 +64,7 @@ const DotGrid: React.FC<DotGridProps> = ({
   returnDuration = 1.5,
   className = '',
   style,
-}) => {
+}: DotGridProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
@@ -287,6 +287,4 @@ const DotGrid: React.FC<DotGridProps> = ({
       </div>
     </section>
   );
-};
-
-export default DotGrid;
+}

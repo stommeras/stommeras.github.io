@@ -1,11 +1,14 @@
 import '@/app/globals.css';
 import { Header } from '@/components/layout/header/Header';
+import { Toaster } from '@/components/ui/sonner';
 import { ConsoleArt } from '@/ConsoleArt';
+import { QueryProvider } from '@/providers/QueryProvider';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
-import { Cascadia_Mono } from 'next/font/google';
+import { Cascadia_Code } from 'next/font/google';
+import { ViewTransition } from 'react';
 
-const cascadiaMono = Cascadia_Mono({
+const cascadiaCode = Cascadia_Code({
   subsets: ['latin'],
   fallback: [
     'ui-monospace',
@@ -17,7 +20,6 @@ const cascadiaMono = Cascadia_Mono({
     'Courier New',
     'monospace',
   ],
-  display: 'swap',
   adjustFontFallback: false,
 });
 
@@ -44,17 +46,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${cascadiaMono.className} antialiased`}>
+      <body className={`${cascadiaCode.className} bg-card text-card-foreground dark: antialiased`}>
         <ConsoleArt />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none">
           Skip to main content
         </a>
-        <ThemeProvider attribute="data-mode">
-          <Header />
-          {children}
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <Header />
+            <ViewTransition>
+              <main id="main-content" className="flex h-screen w-full justify-center">
+                {children}
+              </main>
+              <Toaster />
+            </ViewTransition>
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );
