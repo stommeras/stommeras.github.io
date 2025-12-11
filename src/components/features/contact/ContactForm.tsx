@@ -40,10 +40,7 @@ export function ContactForm() {
     onSubmit: ({ value: formValues }) => {
       mutate(formValues);
     },
-    validationLogic: revalidateLogic({
-      mode: 'blur',
-      modeAfterSubmission: 'change',
-    }),
+    validationLogic: revalidateLogic(),
     validators: {
       onDynamic: contactFormSchema,
     },
