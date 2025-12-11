@@ -38,7 +38,9 @@ export function ContactForm() {
   const form = useForm({
     defaultValues,
     onSubmit: ({ value: formValues }) => {
-      mutate(formValues);
+      mutate(formValues, {
+        onSuccess: () => form.reset(),
+      });
     },
     validationLogic: revalidateLogic(),
     validators: {

@@ -60,7 +60,7 @@ export default function RootLayout({
               <main id="main-content" className="flex h-screen w-full justify-center">
                 {children}
               </main>
-              <Toaster />
+              <Toaster richColors />
             </ViewTransition>
           </ThemeProvider>
         </QueryProvider>
