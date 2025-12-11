@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${cascadiaCode.className} bg-card text-card-foreground antialiased`}>
+      <body className={`${cascadiaCode.className} bg-card text-card-foreground dark: antialiased`}>
         <ConsoleArt />
         <a
           href="#main-content"
