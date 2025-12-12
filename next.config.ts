@@ -3,7 +3,6 @@ import path from 'path';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  output: 'export',
   reactStrictMode: true,
   turbopack: {
     root: path.resolve(__dirname),
