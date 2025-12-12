@@ -1,7 +1,7 @@
 'use client';
 import { gsap } from 'gsap';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import { CSSProperties, useCallback, useEffect, useMemo, useRef } from 'react';
 
 gsap.registerPlugin(InertiaPlugin);
 
@@ -37,7 +37,7 @@ export interface DotGridProps {
   resistance?: number;
   returnDuration?: number;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 function hexToRgb(hex: string) {

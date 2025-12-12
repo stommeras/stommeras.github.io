@@ -10,6 +10,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from '@/components/ui/input-group';
+import { Spinner } from '@/components/ui/spinner';
 import { useFormSubmit } from '@/hooks/useFormSubmit';
 import { revalidateLogic, useForm } from '@tanstack/react-form';
 import { z } from 'zod';
@@ -138,7 +139,14 @@ export function ContactForm() {
         />
       </FieldGroup>
       <Button type="submit" className="bg-primary text-secondary max-w-fit" variant="outline" disabled={isPending}>
-        {isPending ? 'Sending...' : 'Send Message'}
+        {isPending ? (
+          <span className="flex items-center gap-2">
+            <Spinner />
+            Sending...
+          </span>
+        ) : (
+          'Send Message'
+        )}
       </Button>
     </form>
   );
