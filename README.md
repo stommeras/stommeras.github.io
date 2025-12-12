@@ -1,4 +1,4 @@
-# stommeras.github.io
+# tommeras.no
 
 Personal portfolio website and creative playground for exploring modern web technologies. Built as a space to experiment with animations, interactive design patterns, and the latest frontend innovations.
 
