@@ -12,20 +12,8 @@ import {
 } from '@/components/ui/input-group';
 import { Spinner } from '@/components/ui/spinner';
 import { useFormSubmit } from '@/hooks/useFormSubmit';
+import { contactFormSchema, type ContactFormData } from '@/lib/schemas';
 import { revalidateLogic, useForm } from '@tanstack/react-form';
-import { z } from 'zod';
-
-export const contactFormSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name is too long'),
-  email: z.email('Please enter a valid email address'),
-  message: z.string().min(10, 'Message must be at least 10 characters').max(1000, 'Message is too long'),
-});
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
 
 const defaultValues: ContactFormData = {
   name: '',
