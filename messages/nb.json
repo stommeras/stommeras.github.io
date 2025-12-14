@@ -26,8 +26,8 @@
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   "contact": {
-    "subtitle": "Ta kontakt",
-    "description": "Vil du ta kontakt? Fyll ut skjemaet under for å sende meg en melding.",
+    "subtitle": "Kontakt meg",
+    "description": "Ønsker du å ta kontakt? Fyll ut skjemaet under for å sende meg en melding.",
     "form": {
       "name": {
         "label": "Navn",
@@ -61,7 +61,7 @@
     "toast": {
       "success": {
         "title": "Melding sendt!",
-        "description": "Takk for meldingen din. Jeg svarer så snart som mulig!"
+        "description": "Takk for meldingen din. Jeg svarer så fort som mulig!"
       },
       "error": {
         "title": "Kunne ikke sende melding",

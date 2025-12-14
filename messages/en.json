@@ -22,11 +22,11 @@
     "highlight": "websites"
   },
   "about": {
-    "subtitle": "About Me",
+    "subtitle": "About me",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   "contact": {
-    "subtitle": "Get in Touch",
+    "subtitle": "Get in touch",
     "description": "Want to reach out? Fill out the form below to send me a message.",
     "form": {
       "name": {
