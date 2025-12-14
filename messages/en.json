@@ -1,11 +1,16 @@
 {
   "common": {
+    "skipToContent": "Skip to main content",
     "nav": {
+      "home": "Home",
       "about": "About",
       "contact": "Contact"
     },
+    "mobileMenu": {
+      "open": "Open navigation menu",
+      "close": "Close navigation menu"
+    },
     "brand": "Tømmerås",
-    "skipToContent": "Skip to main content",
     "locales": {
       "en": "English",
       "nb": "Norwegian"
