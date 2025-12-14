@@ -5,6 +5,7 @@ import { ConsoleArt } from '@/ConsoleArt';
 import { QueryProvider } from '@/providers/QueryProvider';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
 import { ThemeProvider } from 'next-themes';
 import { Cascadia_Code } from 'next/font/google';
 import { ViewTransition } from 'react';
@@ -55,17 +56,19 @@ export default function RootLayout({
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none">
           Skip to main content
         </a>
-        <QueryProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <Header />
-            <ViewTransition>
-              <main id="main-content" className="flex h-screen w-full justify-center">
-                {children}
-              </main>
-              <Toaster richColors />
-            </ViewTransition>
-          </ThemeProvider>
-        </QueryProvider>
+        <NextIntlClientProvider>
+          <QueryProvider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+              <Header />
+              <ViewTransition>
+                <main id="main-content" className="flex h-screen w-full justify-center">
+                  {children}
+                </main>
+                <Toaster richColors />
+              </ViewTransition>
+            </ThemeProvider>
+          </QueryProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
