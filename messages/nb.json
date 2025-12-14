@@ -5,7 +5,11 @@
       "contact": "Kontakt"
     },
     "brand": "Tømmerås",
-    "skipToContent": "Hopp til hovedinnhold"
+    "skipToContent": "Hopp til hovedinnhold",
+    "locales": {
+      "en": "Engelsk",
+      "nb": "Norsk"
+    }
   },
   "landing": {
     "title": "TØMMERÅS",
