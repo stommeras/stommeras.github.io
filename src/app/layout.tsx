@@ -1,75 +1,11 @@
-import '@/app/globals.css';
-import { Header } from '@/components/layout/header/Header';
-import { Toaster } from '@/components/ui/sonner';
-import { ConsoleArt } from '@/ConsoleArt';
-import { QueryProvider } from '@/providers/QueryProvider';
-import { Analytics } from '@vercel/analytics/next';
-import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { ThemeProvider } from 'next-themes';
-import { Cascadia_Code } from 'next/font/google';
-import { ViewTransition } from 'react';
+import { ReactNode } from 'react';
 
-const cascadiaCode = Cascadia_Code({
-  subsets: ['latin'],
-  fallback: [
-    'ui-monospace',
-    'SFMono-Regular',
-    'Menlo',
-    'Monaco',
-    'Consolas',
-    'Liberation Mono',
-    'Courier New',
-    'monospace',
-  ],
-  adjustFontFallback: false,
-});
-
-export const metadata: Metadata = {
-  title: {
-    default: 'Tømmerås',
-    template: '%s | Tømmerås',
-  },
-  description: 'Personal website and portfolio of Steffen Tømmerås.',
-  keywords: ['portfolio', 'developer', 'website', 'design', 'programming', 'steffen', 'tømmerås'],
-  authors: [{ name: 'Steffen Tømmerås' }],
-  creator: 'Steffen Tømmerås',
-  robots: {
-    index: true,
-    follow: false,
-  },
-  metadataBase: new URL('https://stommeras.github.io'),
+type Props = {
+  children: ReactNode;
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${cascadiaCode.className} bg-card text-card-foreground dark: antialiased`}>
-        <ConsoleArt />
-        <Analytics />
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none">
-          Skip to main content
-        </a>
-        <NextIntlClientProvider>
-          <QueryProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              <Header />
-              <ViewTransition>
-                <main id="main-content" className="flex h-screen w-full justify-center">
-                  {children}
-                </main>
-                <Toaster richColors />
-              </ViewTransition>
-            </ThemeProvider>
-          </QueryProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+// Since we have a `not-found.tsx` page on the root, a layout file
+// is required, even if it's just passing children through.
+export default function RootLayout({ children }: Props) {
+  return children;
 }

@@ -1,10 +1,13 @@
 import { DecryptedText, PageContainer, Subtitle } from '@/components/ui';
+import { getTranslations } from 'next-intl/server';
 
-export function About() {
+export async function About() {
+  const t = await getTranslations('about');
+
   return (
     <PageContainer>
-      <Subtitle>Lorem Ipsum</Subtitle>
-      <p className="max-w-[800px] text-left">
+      <Subtitle>{t('subtitle')}</Subtitle>
+      <p className="max-w-200 text-left">
         <DecryptedText
           animateOn="view"
           speed={15}

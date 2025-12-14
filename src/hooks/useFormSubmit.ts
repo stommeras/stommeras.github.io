@@ -2,6 +2,7 @@
 
 import { sendEmail } from '@/actions/send-email';
 import { useMutation } from '@tanstack/react-query';
+import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
 interface FormsData {
@@ -11,6 +12,8 @@ interface FormsData {
 }
 
 export function useFormSubmit() {
+  const t = useTranslations('contact.toast');
+
   return useMutation({
     mutationFn: async (data: FormsData) => {
       const result = await sendEmail(data);
@@ -21,14 +24,14 @@ export function useFormSubmit() {
 
       return result;
     },
-    onSuccess: (_, variables) => {
-      toast.success('Message sent successfully', {
-        description: `Thank you for your message ${variables.name}. I'll get back to you soon!`,
+    onSuccess: () => {
+      toast.success(t('success.title'), {
+        description: t('success.description'),
       });
     },
     onError: (error: Error) => {
-      toast.error('Failed to send message', {
-        description: error.message || 'Please try again later.',
+      toast.error(t('error.title'), {
+        description: error.message || t('error.description'),
       });
     },
   });

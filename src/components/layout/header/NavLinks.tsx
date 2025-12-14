@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -8,14 +9,15 @@ interface NavLinksProps {
   onLinkClick?: () => void;
 }
 
-const links = [
-  { href: '/', label: 'Tømmerås', isBrand: true },
-  { href: '/about', label: 'About', isBrand: false },
-  { href: '/contact', label: 'Contact', isBrand: false },
-];
-
 export function NavLinks({ onLinkClick, className }: NavLinksProps) {
   const pathname = usePathname();
+  const t = useTranslations('common');
+
+  const links = [
+    { href: '/', label: t('brand'), isBrand: true },
+    { href: '/about', label: t('nav.about'), isBrand: false },
+    { href: '/contact', label: t('nav.contact'), isBrand: false },
+  ];
 
   const handleClick = () => {
     if (onLinkClick) {
