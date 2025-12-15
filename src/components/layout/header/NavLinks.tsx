@@ -1,21 +1,21 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 interface NavLinksProps {
   className?: string;
   onLinkClick?: () => void;
 }
 
-const links = [
-  { href: '/', label: 'Tømmerås', isBrand: true },
-  { href: '/about', label: 'About', isBrand: false },
-  { href: '/contact', label: 'Contact', isBrand: false },
-];
-
 export function NavLinks({ onLinkClick, className }: NavLinksProps) {
   const pathname = usePathname();
+  const t = useTranslations('common');
+
+  const links = [
+    { href: '/about', label: t('nav.about') },
+    { href: '/contact', label: t('nav.contact') },
+  ] as const;
 
   const handleClick = () => {
     if (onLinkClick) {
@@ -25,7 +25,7 @@ export function NavLinks({ onLinkClick, className }: NavLinksProps) {
 
   return (
     <nav className={className}>
-      {links.map(({ href, label, isBrand }) => {
+      {links.map(({ href, label }) => {
         const isActive = pathname === href;
 
         return (
@@ -33,9 +33,7 @@ export function NavLinks({ onLinkClick, className }: NavLinksProps) {
             key={href}
             href={href}
             onClick={handleClick}
-            className={`transition-colors hover:text-[deeppink] ${
-              isBrand ? 'mr-8 text-2xl font-bold italic' : 'text-lg not-italic'
-            } ${isActive ? 'underline' : ''}`}>
+            className={`transition-colors hover:text-[deeppink] ${isActive ? 'underline underline-offset-3' : ''}`}>
             {label}
           </Link>
         );

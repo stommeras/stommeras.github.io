@@ -12,8 +12,9 @@ import {
 } from '@/components/ui/input-group';
 import { Spinner } from '@/components/ui/spinner';
 import { useFormSubmit } from '@/hooks/useFormSubmit';
-import { contactFormSchema, type ContactFormData } from '@/lib/schemas';
+import { createContactFormSchema, type ContactFormData } from '@/lib/schemas';
 import { revalidateLogic, useForm } from '@tanstack/react-form';
+import { useTranslations } from 'next-intl';
 
 const defaultValues: ContactFormData = {
   name: '',
@@ -22,7 +23,10 @@ const defaultValues: ContactFormData = {
 };
 
 export function ContactForm() {
+  const t = useTranslations('contact');
   const { isPending, mutate } = useFormSubmit();
+
+  const contactFormSchema = createContactFormSchema((key) => t(key));
 
   const form = useForm({
     defaultValues,
@@ -39,7 +43,7 @@ export function ContactForm() {
 
   return (
     <form
-      aria-label="Contact form"
+      aria-label={t('ariaLabel')}
       className="flex w-full flex-col items-end gap-4"
       noValidate
       onSubmit={(e) => {
@@ -54,7 +58,7 @@ export function ContactForm() {
               const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
               return (
                 <Field data-invalid={isInvalid}>
-                  <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t('form.name.label')}</FieldLabel>
                   <InputGroup>
                     <InputGroupInput
                       id={field.name}
@@ -63,7 +67,7 @@ export function ContactForm() {
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
                       aria-invalid={isInvalid}
-                      placeholder="Name Nameson"
+                      placeholder={t('form.name.placeholder')}
                       autoComplete="off"
                     />
                   </InputGroup>
@@ -78,7 +82,7 @@ export function ContactForm() {
               const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
               return (
                 <Field data-invalid={isInvalid}>
-                  <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t('form.email.label')}</FieldLabel>
                   <InputGroup>
                     <InputGroupInput
                       id={field.name}
@@ -87,7 +91,7 @@ export function ContactForm() {
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
                       aria-invalid={isInvalid}
-                      placeholder="email@example.com"
+                      placeholder={t('form.email.placeholder')}
                       autoComplete="off"
                     />
                   </InputGroup>
@@ -103,7 +107,7 @@ export function ContactForm() {
             const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
             return (
               <Field data-invalid={isInvalid}>
-                <FieldLabel htmlFor={field.name}>Message</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('form.message.label')}</FieldLabel>
                 <InputGroup>
                   <InputGroupTextarea
                     id={field.name}
@@ -111,13 +115,15 @@ export function ContactForm() {
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="Write a message..."
+                    placeholder={t('form.message.placeholder')}
                     rows={6}
                     className="min-h-24 resize-none"
                     aria-invalid={isInvalid}
                   />
                   <InputGroupAddon align="block-end">
-                    <InputGroupText className="tabular-nums">{field.state.value.length}/1000 characters</InputGroupText>
+                    <InputGroupText className="tabular-nums">
+                      {t('form.characterCounter', { count: field.state.value.length })}
+                    </InputGroupText>
                   </InputGroupAddon>
                 </InputGroup>
                 {isInvalid && <FieldError errors={field.state.meta.errors} />}
@@ -130,10 +136,10 @@ export function ContactForm() {
         {isPending ? (
           <span className="flex items-center gap-2">
             <Spinner />
-            Sending...
+            {t('form.submitting')}
           </span>
         ) : (
-          'Send Message'
+          t('form.submit')
         )}
       </Button>
     </form>
