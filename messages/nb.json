@@ -26,6 +26,7 @@
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   "contact": {
+    "ariaLabel": "Kontaktskjema",
     "subtitle": "Kontakt meg",
     "description": "Ønsker du å ta kontakt? Fyll ut skjemaet under for å sende meg en melding.",
     "form": {

@@ -43,7 +43,7 @@ export function ContactForm() {
 
   return (
     <form
-      aria-label="Contact form"
+      aria-label={t('ariaLabel')}
       className="flex w-full flex-col items-end gap-4"
       noValidate
       onSubmit={(e) => {

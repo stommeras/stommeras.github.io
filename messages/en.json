@@ -29,6 +29,7 @@
     "subtitle": "Get in touch",
     "description": "Want to reach out? Fill out the form below to send me a message.",
     "form": {
+      "ariaLabel": "Contact form",
       "name": {
         "label": "Name",
         "placeholder": "Name Nameson"
