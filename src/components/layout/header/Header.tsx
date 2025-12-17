@@ -26,11 +26,14 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="fixed top-0 z-10 w-full backdrop-blur-sm">
-      <div className="flex items-center justify-between p-4">
+    <header className="fixed top-0 z-10 w-full">
+      <div className="from-card absolute inset-0 bg-linear-to-b to-transparent backdrop-blur-sm [mask:linear-gradient(black,black,transparent)]" />
+      <div className="relative flex items-center justify-between p-2 md:p-4">
         <div className="flex items-center gap-8">
-          <DropdownMenu onOpenChange={trigger}>
-            <DropdownMenuTrigger className="rounded p-2 text-lg transition-colors hover:text-[deeppink] md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className="rounded p-2 text-lg transition-colors hover:text-[deeppink] md:hidden"
+              onMouseEnter={trigger}>
               <animated.div className="leading-none" style={style}>
                 <Menu className="h-6 w-6" />
               </animated.div>

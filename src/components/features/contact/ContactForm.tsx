@@ -12,9 +12,15 @@ import {
 } from '@/components/ui/input-group';
 import { Spinner } from '@/components/ui/spinner';
 import { useFormSubmit } from '@/hooks/useFormSubmit';
-import { createContactFormSchema, type ContactFormData } from '@/lib/schemas';
 import { revalidateLogic, useForm } from '@tanstack/react-form';
 import { useTranslations } from 'next-intl';
+import { z } from 'zod';
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const defaultValues: ContactFormData = {
   name: '',
@@ -26,7 +32,11 @@ export function ContactForm() {
   const t = useTranslations('contact');
   const { isPending, mutate } = useFormSubmit();
 
-  const contactFormSchema = createContactFormSchema((key) => t(key));
+  const contactFormSchema = z.object({
+    name: z.string().min(2, t('validation.name.min')).max(100, t('validation.name.max')),
+    email: z.email(t('validation.email.invalid')),
+    message: z.string().min(10, t('validation.message.min')).max(1000, t('validation.message.max')),
+  });
 
   const form = useForm({
     defaultValues,

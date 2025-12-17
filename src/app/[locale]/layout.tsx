@@ -1,5 +1,6 @@
 import '@/app/globals.css';
-import { Header } from '@/components/layout/header/Header';
+import { Footer } from '@/components/layout/footer';
+import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/sonner';
 import { ConsoleArt } from '@/ConsoleArt';
 import { routing } from '@/i18n/routing';
@@ -52,7 +53,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${cascadiaCode.className} bg-card text-card-foreground dark: antialiased`}>
+      <body className={`${cascadiaCode.className} bg-card text-card-foreground flex min-h-screen flex-col antialiased`}>
         <ConsoleArt />
         <Analytics />
         <a
@@ -65,11 +66,15 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
               <Header />
               <ViewTransition>
-                <main id="main-content" className="flex h-screen w-full justify-center">
+                <main
+                  id="main-content"
+                  className="flex h-full min-h-0 flex-1 grow justify-center pt-14 md:pt-20"
+                  suppressHydrationWarning>
                   {children}
                 </main>
                 <Toaster richColors />
               </ViewTransition>
+              <Footer />
             </ThemeProvider>
           </QueryProvider>
         </NextIntlClientProvider>
