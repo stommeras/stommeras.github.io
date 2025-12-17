@@ -38,9 +38,10 @@ export function LocaleSwitcher() {
   };
 
   return (
-    <DropdownMenu onOpenChange={trigger}>
+    <DropdownMenu>
       <DropdownMenuTrigger
         className="rounded p-2 text-lg transition-colors hover:text-[deeppink] disabled:opacity-50"
+        onMouseEnter={trigger}
         disabled={isPending}>
         <animated.div className="leading-none" style={style}>
           {locale.toUpperCase()}

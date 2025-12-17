@@ -17,6 +17,11 @@ export function DarkToggle() {
     return null;
   }
 
+  const triggerStyles = () => {
+    iconTrigger();
+    containerTrigger();
+  };
+
   return (
     <animated.div
       className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl"
@@ -27,10 +32,8 @@ export function DarkToggle() {
         onPressedChange={(pressed) => {
           setTheme(pressed ? 'dark' : 'light');
         }}
-        onClick={() => {
-          iconTrigger();
-          containerTrigger();
-        }}>
+        onClick={triggerStyles}
+        onMouseEnter={triggerStyles}>
         <animated.div style={iconStyle}>{resolvedTheme === 'dark' ? <Moon /> : <Sun />}</animated.div>
       </Toggle>
     </animated.div>

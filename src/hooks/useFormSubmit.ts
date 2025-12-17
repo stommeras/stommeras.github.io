@@ -1,21 +1,16 @@
 'use client';
 
 import { sendEmail } from '@/actions/send-email';
+import { ContactFormData } from '@/components/features/contact/ContactForm';
 import { useMutation } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
-
-interface FormsData {
-  name: string;
-  email: string;
-  message: string;
-}
 
 export function useFormSubmit() {
   const t = useTranslations('contact.toast');
 
   return useMutation({
-    mutationFn: async (data: FormsData) => {
+    mutationFn: async (data: ContactFormData) => {
       const result = await sendEmail(data);
 
       if (!result.success) {

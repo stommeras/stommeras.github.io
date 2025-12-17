@@ -14,6 +14,13 @@
     "locales": {
       "en": "Engelsk",
       "nb": "Norsk"
+    },
+    "footer": {
+      "nav": {
+        "ariaLabel": "Navigasjonsmeny i bunntekst",
+        "github": { "ariaLabel": "GitHub repository lenke" },
+        "linkedin": { "ariaLabel": "LinkedIn profil lenke" }
+      }
     }
   },
   "landing": {

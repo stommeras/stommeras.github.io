@@ -281,10 +281,10 @@ export function DotGrid({
   }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
 
   return (
-    <section className={`flex h-full w-full items-center justify-center p-4 ${className}`} style={style}>
+    <div className={`flex h-full w-full items-center justify-center p-4 ${className}`} style={style}>
       <div ref={wrapperRef} className="relative h-full w-full">
         <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" />
       </div>
-    </section>
+    </div>
   );
 }
