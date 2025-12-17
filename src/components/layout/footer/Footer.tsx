@@ -1,13 +1,13 @@
 'use client';
 
-import { useBoop } from '@/hooks/useBoop';
+import { useBoopHover } from '@/hooks/useBoop';
 import { animated } from '@react-spring/web';
 import { useTranslations } from 'next-intl';
 
 export function Footer() {
   const t = useTranslations('common');
-  const [githubStyle, triggerGithub] = useBoop({ scale: 1.1, rotation: 10 });
-  const [linkedinStyle, triggerLinkedin] = useBoop({ scale: 1.1, rotation: 10 });
+  const [githubStyle, triggerGithub] = useBoopHover();
+  const [linkedinStyle, triggerLinkedin] = useBoopHover();
 
   const currentYear = new Date().getFullYear();
 

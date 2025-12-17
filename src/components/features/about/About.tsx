@@ -1,4 +1,7 @@
-import { DecryptedText, PageContainer, Subtitle } from '@/components/ui';
+import { PageContainer } from '@/components/ui/Containers';
+import { DecryptedText } from '@/components/ui/text-effects';
+import { DECRYPT_PRESETS } from '@/components/ui/text-effects/constants';
+import { Subtitle } from '@/components/ui/Typography';
 import { getTranslations } from 'next-intl/server';
 
 export async function About() {
@@ -9,38 +12,23 @@ export async function About() {
       <Subtitle>{t('subtitle')}</Subtitle>
       <p className="max-w-200 text-left">
         <DecryptedText
-          animateOn="view"
-          speed={15}
-          maxIterations={1}
-          sequential
+          {...DECRYPT_PRESETS.subtle}
           text="Nisi culpa magna pariatur adipisicing cillum officia duis dolore."
         />
         <DecryptedText
-          animateOn="view"
-          speed={15}
-          maxIterations={1}
-          sequential
+          {...DECRYPT_PRESETS.subtle}
           text="Et enim aute qui minim et. Lorem commodo in est consectetur."
         />
         <DecryptedText
-          animateOn="view"
-          speed={15}
-          maxIterations={1}
-          sequential
+          {...DECRYPT_PRESETS.subtle}
           text="Sit fugiat velit qui officia incididunt sit mollit ullamco laboris."
         />
         <DecryptedText
-          animateOn="view"
-          speed={15}
-          maxIterations={1}
-          sequential
+          {...DECRYPT_PRESETS.subtle}
           text="Aliquip ex culpa id ex esse excepteur quis mollit nostrud aliquip quis aute."
         />
         <DecryptedText
-          animateOn="view"
-          speed={15}
-          maxIterations={1}
-          sequential
+          {...DECRYPT_PRESETS.subtle}
           text="Dolor sit amet Lorem nostrud velit. Ad dolor est ipsum pariatur voluptate proident culpa tempor laborum occaecat in ipsum."
         />
       </p>

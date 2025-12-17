@@ -1,5 +1,6 @@
 import { ContactForm } from '@/components/features/contact/ContactForm';
-import { PageContainer, Subtitle } from '@/components/ui';
+import { PageContainer } from '@/components/ui/Containers';
+import { Subtitle } from '@/components/ui/Typography';
 import { getTranslations } from 'next-intl/server';
 
 export async function Contact() {

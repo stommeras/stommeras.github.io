@@ -1,7 +1,7 @@
 'use client';
 
 import { Toggle } from '@/components/ui/toggle';
-import { useBoop } from '@/hooks/useBoop';
+import { useBoopPlayful, useBoopScale } from '@/hooks/useBoop';
 import { useIsClient } from '@/hooks/useIsClient';
 import { animated } from '@react-spring/web';
 import { Moon, Sun } from 'lucide-react';
@@ -9,8 +9,8 @@ import { useTheme } from 'next-themes';
 
 export function DarkToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [containerStyle, containerTrigger] = useBoop({ scale: 1.1 });
-  const [iconStyle, iconTrigger] = useBoop({ scale: 1.1, rotation: 15 });
+  const [containerStyle, containerTrigger] = useBoopScale();
+  const [iconStyle, iconTrigger] = useBoopPlayful();
   const isClient = useIsClient();
 
   if (!isClient) {

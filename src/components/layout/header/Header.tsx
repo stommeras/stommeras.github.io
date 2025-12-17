@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useBoop } from '@/hooks/useBoop';
+import { useBoopHover } from '@/hooks/useBoop';
 import { Link } from '@/i18n/navigation';
 import { animated } from '@react-spring/web';
 import { Menu } from 'lucide-react';
@@ -17,7 +17,7 @@ import { useTranslations } from 'next-intl';
 
 export function Header() {
   const t = useTranslations('common');
-  const [style, trigger] = useBoop({ scale: 1.1, rotation: 10 });
+  const [style, trigger] = useBoopHover();
 
   const mobileLinks = [
     { href: '/', label: t('nav.home') },

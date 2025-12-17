@@ -1,14 +1,16 @@
 'use client';
 
-import { DecryptedText, Title } from '@/components/ui';
-import { useBoop } from '@/hooks/useBoop';
+import { DecryptedText } from '@/components/ui/text-effects';
+import { DECRYPT_PRESETS } from '@/components/ui/text-effects/constants';
+import { Title } from '@/components/ui/Typography';
+import { useBoopJump } from '@/hooks/useBoop';
 import { animated } from '@react-spring/web';
 
 const TITLE = 'TØMMERÅS';
 const CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 export function LandingTitle() {
-  const [style, trigger] = useBoop({ y: -10, scale: 1.1, springConfig: { tension: 200, friction: 15 } });
+  const [style, trigger] = useBoopJump();
 
   return (
     <Title className="relative cursor-pointer" onMouseEnter={trigger} onTouchStart={trigger} tabIndex={0} role="button">
@@ -18,7 +20,7 @@ export function LandingTitle() {
         aria-hidden="true">
         🎅
       </animated.span>
-      <DecryptedText text={TITLE} characters={CHARACTERS} sequential speed={20} maxIterations={4} />
+      <DecryptedText text={TITLE} characters={CHARACTERS} {...DECRYPT_PRESETS.dramatic} />
     </Title>
   );
 }

@@ -64,3 +64,49 @@ export function useBoop({
 
   return [appliedStyle, trigger] as const;
 }
+
+/**
+ * Animation presets for common boop interactions
+ */
+export const BOOP_PRESETS = {
+  /** Subtle scale and rotation - good for icons and links */
+  hover: { scale: 1.1, rotation: 10 },
+  /** Upward bounce with scale - good for interactive elements */
+  jump: { y: -10, scale: 1.1, springConfig: { tension: 200, friction: 15 } },
+  /** Scale only - good for contained elements */
+  scale: { scale: 1.1 },
+  /** Scale with larger rotation - good for playful elements */
+  playful: { scale: 1.1, rotation: 15 },
+} as const;
+
+/**
+ * Preset hook for common hover animation: scale 1.1 + rotation 10deg
+ * Used in Header, LocaleSwitcher, Footer links
+ */
+export function useBoopHover() {
+  return useBoop(BOOP_PRESETS.hover);
+}
+
+/**
+ * Preset hook for jump animation: y -10 + scale 1.1
+ * Used in LandingTitle
+ */
+export function useBoopJump() {
+  return useBoop(BOOP_PRESETS.jump);
+}
+
+/**
+ * Preset hook for scale-only animation
+ * Used in DarkToggle container
+ */
+export function useBoopScale() {
+  return useBoop(BOOP_PRESETS.scale);
+}
+
+/**
+ * Preset hook for playful animation: scale 1.1 + rotation 15deg
+ * Used in DarkToggle icon
+ */
+export function useBoopPlayful() {
+  return useBoop(BOOP_PRESETS.playful);
+}

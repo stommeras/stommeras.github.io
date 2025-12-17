@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useBoop } from '@/hooks/useBoop';
+import { useBoopHover } from '@/hooks/useBoop';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { animated } from '@react-spring/web';
@@ -21,7 +21,7 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
   const params = useParams();
   const [isPending, startTransition] = useTransition();
-  const [style, trigger] = useBoop({ scale: 1.1, rotation: 10 });
+  const [style, trigger] = useBoopHover();
 
   const handleLocaleChange = (newLocale: string) => {
     if (newLocale === locale) return;
