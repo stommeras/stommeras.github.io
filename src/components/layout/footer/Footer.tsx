@@ -21,7 +21,7 @@ export function Footer() {
     },
     {
       key: 'linkedin',
-      href: 'https://www.linkedin.com/steffentommeras/',
+      href: 'https://www.linkedin.com/in/steffen-tommeras/',
       icon: <LinkedInIcon />,
       style: linkedinStyle,
       trigger: triggerLinkedin,
@@ -40,7 +40,7 @@ export function Footer() {
             href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground text-lg transition-colors hover:text-[deeppink]"
+            className="text-muted-foreground hover:text-primary text-lg transition-colors"
             onMouseEnter={social.trigger}
             aria-label={t(`footer.nav.${social.key}.ariaLabel`)}>
             <animated.div style={social.style}>{social.icon}</animated.div>

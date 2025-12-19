@@ -33,7 +33,7 @@ export function NavLinks({ onLinkClick, className }: NavLinksProps) {
             key={href}
             href={href}
             onClick={handleClick}
-            className={`transition-colors hover:text-[deeppink] ${isActive ? 'underline underline-offset-3' : ''}`}>
+            className={`hover:text-primary transition-colors ${isActive ? 'underline underline-offset-3' : ''}`}>
             {label}
           </Link>
         );

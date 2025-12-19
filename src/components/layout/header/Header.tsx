@@ -1,8 +1,8 @@
 'use client';
 
-import { DarkToggle } from '@/components/layout/header/DarkToggle';
 import { LocaleSwitcher } from '@/components/layout/header/LocaleSwitcher';
 import { NavLinks } from '@/components/layout/header/NavLinks';
+import { ThemeSwitcher } from '@/components/layout/header/ThemeSwitcher';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,7 +32,7 @@ export function Header() {
         <div className="flex items-center gap-8">
           <DropdownMenu>
             <DropdownMenuTrigger
-              className="rounded p-2 text-lg transition-colors hover:text-[deeppink] md:hidden"
+              className="hover:text-primary rounded p-2 text-lg transition-colors md:hidden"
               onMouseEnter={trigger}>
               <animated.div className="leading-none" style={style}>
                 <Menu className="h-6 w-6" />
@@ -41,20 +41,18 @@ export function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="flex flex-col gap-1">
               {mobileLinks.map(({ href, label }) => (
-                <DropdownMenuItem key={href} asChild>
-                  <Link href={href}>{label}</Link>
-                </DropdownMenuItem>
+                <DropdownMenuItem key={href} render={<Link href={href}>{label}</Link>} />
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link href="/" className="text-2xl font-bold italic hover:text-[deeppink]">
+          <Link href="/" className="hover:text-primary text-2xl font-bold italic">
             {t('brand')}
           </Link>
           <NavLinks className="hidden md:flex md:gap-6" />
         </div>
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
-          <DarkToggle />
+          <ThemeSwitcher />
         </div>
       </div>
     </header>

@@ -40,7 +40,7 @@ export function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="rounded p-2 text-lg transition-colors hover:text-[deeppink] disabled:opacity-50"
+        className="hover:text-primary rounded p-2 text-lg transition-colors disabled:opacity-50"
         onMouseEnter={trigger}
         disabled={isPending}>
         <animated.div className="leading-none" style={style}>

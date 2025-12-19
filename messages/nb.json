@@ -15,6 +15,10 @@
       "en": "Engelsk",
       "nb": "Norsk"
     },
+    "theme": {
+      "dark": "Bytt til lys modus",
+      "light": "Bytt til mørk modus"
+    },
     "footer": {
       "nav": {
         "ariaLabel": "Navigasjonsmeny i bunntekst",

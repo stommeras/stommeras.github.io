@@ -5,9 +5,11 @@ import { useBoopPlayful, useBoopScale } from '@/hooks/useBoop';
 import { useIsClient } from '@/hooks/useIsClient';
 import { animated } from '@react-spring/web';
 import { Moon, Sun } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
-export function DarkToggle() {
+export function ThemeSwitcher() {
+  const t = useTranslations('common');
   const { resolvedTheme, setTheme } = useTheme();
   const [containerStyle, containerTrigger] = useBoopScale();
   const [iconStyle, iconTrigger] = useBoopPlayful();
@@ -28,13 +30,15 @@ export function DarkToggle() {
       aria-label={resolvedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       style={containerStyle}>
       <Toggle
+        aria-label={t(`theme.${resolvedTheme === 'dark' ? 'dark' : 'light'}`)}
         pressed={resolvedTheme === 'dark'}
         onPressedChange={(pressed) => {
           setTheme(pressed ? 'dark' : 'light');
         }}
-        onClick={triggerStyles}
-        onMouseEnter={triggerStyles}>
-        <animated.div style={iconStyle}>{resolvedTheme === 'dark' ? <Moon /> : <Sun />}</animated.div>
+        onClick={triggerStyles}>
+        <animated.div style={iconStyle}>
+          {resolvedTheme === 'dark' ? <Moon size={14} /> : <Sun size={14} />}
+        </animated.div>
       </Toggle>
     </animated.div>
   );

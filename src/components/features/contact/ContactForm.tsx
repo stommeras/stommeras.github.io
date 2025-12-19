@@ -142,7 +142,7 @@ export function ContactForm() {
           }}
         />
       </FieldGroup>
-      <Button type="submit" className="bg-primary text-secondary max-w-fit" variant="outline" disabled={isPending}>
+      <Button type="submit" className="max-w-fit" variant="default" disabled={isPending}>
         {isPending ? (
           <span className="flex items-center gap-2">
             <Spinner />
