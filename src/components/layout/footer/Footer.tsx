@@ -29,7 +29,7 @@ export function Footer() {
   ] as const;
 
   return (
-    <footer className="border-border/40 bg-card/50 mt-auto flex w-full flex-col items-center justify-between gap-4 border-t p-4 backdrop-blur-sm md:flex-row">
+    <footer className="border-border/40 bg-card/50 mt-auto flex w-full flex-col items-center justify-between gap-4 border-t p-4 backdrop-blur-sm md:flex-row z-20">
       <p className="text-muted-foreground text-sm" suppressHydrationWarning>
         Steffen Tømmerås © {currentYear}
       </p>

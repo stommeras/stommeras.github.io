@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
+import { TrailingBlur } from '@/components/ui/cursor-effects/TrailingBlur';
 import { Toaster } from '@/components/ui/sonner';
 import { ConsoleArt } from '@/ConsoleArt';
 import { routing } from '@/i18n/routing';
@@ -65,6 +66,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
           <QueryProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
               <Header />
+              <TrailingBlur />
               <ViewTransition>
                 <main
                   id="main-content"

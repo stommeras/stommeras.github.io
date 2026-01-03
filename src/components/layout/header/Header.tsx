@@ -26,7 +26,7 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="fixed top-0 z-10 w-full">
+    <header className="fixed top-0 z-20 w-full">
       <div className="from-card absolute inset-0 bg-linear-to-b to-transparent backdrop-blur-sm [mask:linear-gradient(black,black,transparent)]" />
       <div className="relative flex items-center justify-between p-2 md:p-4">
         <div className="flex items-center gap-8">
