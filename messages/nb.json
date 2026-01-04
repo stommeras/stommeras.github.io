@@ -19,6 +19,11 @@
       "dark": "Bytt til lys modus",
       "light": "Bytt til mørk modus"
     },
+    "cursorEffects": {
+      "none": "Ingen",
+      "choose": "Markøreffekt",
+      "magic": "Magisk mus"
+    },
     "footer": {
       "nav": {
         "ariaLabel": "Navigasjonsmeny i bunntekst",

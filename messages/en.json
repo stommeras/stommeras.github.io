@@ -19,6 +19,11 @@
       "dark": "Switch to light mode",
       "light": "Switch to dark mode"
     },
+    "cursorEffects": {
+      "none": "None",
+      "choose": "Cursor effects",
+      "magic": "Magic mouse"
+    },
     "footer": {
       "nav": {
         "ariaLabel": "Navigation menu in footer",

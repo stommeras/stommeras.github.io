@@ -6,10 +6,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useBoopHover } from '@/hooks/useBoop';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
-import { animated } from '@react-spring/web';
 import { useLocale, useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useTransition } from 'react';
@@ -21,7 +19,6 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
   const params = useParams();
   const [isPending, startTransition] = useTransition();
-  const [style, trigger] = useBoopHover();
 
   const handleLocaleChange = (newLocale: string) => {
     if (newLocale === locale) return;
@@ -40,19 +37,16 @@ export function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="hover:text-primary rounded p-2 text-lg transition-colors disabled:opacity-50"
-        onMouseEnter={trigger}
+        className="hover:text-primary text-md hover:border-accent border-2 px-2 transition-colors"
         disabled={isPending}>
-        <animated.div className="leading-none" style={style}>
-          {locale.toUpperCase()}
-        </animated.div>
+        {locale.toUpperCase()}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="flex flex-col gap-1">
         {routing.locales.map((loc) => (
           <DropdownMenuItem
             key={loc}
             onClick={() => handleLocaleChange(loc)}
-            className={locale === loc ? 'bg-accent' : ''}>
+            className={locale === loc ? 'bg-ring' : ''}>
             {t(loc)}
           </DropdownMenuItem>
         ))}

@@ -1,0 +1,1 @@
+export { MagicTrail } from './MagicTrail';

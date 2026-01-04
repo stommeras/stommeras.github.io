@@ -10,13 +10,17 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useBoopHover } from '@/hooks/useBoop';
+import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 import { Link } from '@/i18n/navigation';
 import { animated } from '@react-spring/web';
 import { Menu } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Activity } from 'react';
+import { CursorEffectSwitcher } from './CursorEffectSwitcher';
 
 export function Header() {
   const t = useTranslations('common');
+  const isTouchDevice = useIsTouchDevice();
   const [style, trigger] = useBoopHover();
 
   const mobileLinks = [
@@ -50,7 +54,10 @@ export function Header() {
           </Link>
           <NavLinks className="hidden md:flex md:gap-6" />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
+          <Activity mode={isTouchDevice ? 'hidden' : 'visible'}>
+            <CursorEffectSwitcher />
+          </Activity>
           <LocaleSwitcher />
           <ThemeSwitcher />
         </div>

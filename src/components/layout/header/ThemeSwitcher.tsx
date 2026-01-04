@@ -26,10 +26,11 @@ export function ThemeSwitcher() {
 
   return (
     <animated.div
-      className="aspect-square cursor-pointer border-none bg-transparent p-2 text-3xl"
+      className="h-fitcursor-pointer w-fit bg-transparent transition-transform hover:scale-110"
       aria-label={resolvedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       style={containerStyle}>
       <Toggle
+        className="aspect-square h-full w-full text-3xl"
         aria-label={t(`theme.${resolvedTheme === 'dark' ? 'dark' : 'light'}`)}
         pressed={resolvedTheme === 'dark'}
         onPressedChange={(pressed) => {

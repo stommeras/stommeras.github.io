@@ -2,10 +2,10 @@ import React from 'react';
 
 // Source here: https://joshwcomeau.com/snippets/react-hooks/use-mouse-position
 const useMousePosition = () => {
-  const [
-    mousePosition,
-    setMousePosition
-  ] = React.useState<{ x: number | null; y: number | null }>({ x: null, y: null });
+  const [mousePosition, setMousePosition] = React.useState<{ x: number | null; y: number | null }>({
+    x: null,
+    y: null,
+  });
 
   React.useEffect(() => {
     const updateMousePosition = (ev: MouseEvent) => {

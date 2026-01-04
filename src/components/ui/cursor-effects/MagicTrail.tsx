@@ -19,7 +19,7 @@ interface StarConfig {
   animations: string[];
 }
 
-export function TrailingBlur() {
+export function MagicTrail() {
   const containerRef = useRef<HTMLDivElement>(null);
   const state = useRef({
     startTime: new Date().getTime(),
@@ -141,19 +141,8 @@ export function TrailingBlur() {
 
     // --- Event Handler ---
 
-    const handleOnMove = (e: MouseEvent | TouchEvent) => {
-      let clientX, clientY;
-
-      if ('touches' in e) {
-        const touch = e.touches[0];
-        if (!touch) return;
-        clientX = touch.clientX;
-        clientY = touch.clientY;
-      } else {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      }
-      const currentPosition = { x: clientX, y: clientY };
+    const handleOnMove = (e: MouseEvent) => {
+      const currentPosition = { x: e.clientX, y: e.clientY };
 
       adjustLastMousePosition(currentPosition);
 
@@ -178,12 +167,10 @@ export function TrailingBlur() {
 
     // Use specific event casting for addEventListener to satisfy TypeScript strictness
     window.addEventListener('mousemove', handleOnMove);
-    window.addEventListener('touchmove', handleOnMove);
     document.body.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       window.removeEventListener('mousemove', handleOnMove);
-      window.removeEventListener('touchmove', handleOnMove);
       document.body.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
