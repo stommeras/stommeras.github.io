@@ -1,4 +1,4 @@
-import { MagicTrail } from '@/components/ui/cursor-effects';
+import { MagicTrail, TargetCursor } from '@/components/ui/cursor-effects';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,11 +7,13 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useIsTouchDevice } from '@/hooks/useIsTouchDevice';
 import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
 import { useState } from 'react';
 
 const CURSOR_EFFECTS = {
   NONE: 'none',
   MAGIC: 'magic',
+  TARGET: 'target',
 } as const;
 
 type CursorEffect = (typeof CURSOR_EFFECTS)[keyof typeof CURSOR_EFFECTS];
@@ -27,6 +29,8 @@ export function CursorEffectSwitcher() {
     switch (cursorEffect) {
       case 'magic':
         return <MagicTrail />;
+      case 'target':
+        return <TargetCursor spinDuration={4} />;
       case 'none':
       default:
         return null;
@@ -37,7 +41,7 @@ export function CursorEffectSwitcher() {
     <>
       {renderCursorEffect()}
       <DropdownMenu>
-        <DropdownMenuTrigger className="hover:text-primary text-md hover:border-accent border-2 px-2 transition-colors">
+        <DropdownMenuTrigger className="cursor-target hover:text-primary text-md hover:border-accent border-2 px-2 transition-colors">
           {t('choose')}
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

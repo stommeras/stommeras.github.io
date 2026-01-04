@@ -26,7 +26,7 @@ export function ThemeSwitcher() {
 
   return (
     <animated.div
-      className="h-fitcursor-pointer w-fit bg-transparent transition-transform hover:scale-110"
+      className="cursor-target h-fitcursor-pointer w-fit bg-transparent transition-transform hover:scale-110"
       aria-label={resolvedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       style={containerStyle}>
       <Toggle

@@ -72,6 +72,7 @@ export function ContactForm() {
                   <InputGroup>
                     <InputGroupInput
                       id={field.name}
+                      className="cursor-target"
                       name={field.name}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -96,6 +97,7 @@ export function ContactForm() {
                   <InputGroup>
                     <InputGroupInput
                       id={field.name}
+                      className="cursor-target"
                       name={field.name}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -118,16 +120,16 @@ export function ContactForm() {
             return (
               <Field data-invalid={isInvalid}>
                 <FieldLabel htmlFor={field.name}>{t('form.message.label')}</FieldLabel>
-                <InputGroup>
+                <InputGroup className="cursor-target">
                   <InputGroupTextarea
                     id={field.name}
+                    className="min-h-24 resize-none"
                     name={field.name}
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
                     placeholder={t('form.message.placeholder')}
                     rows={6}
-                    className="min-h-24 resize-none"
                     aria-invalid={isInvalid}
                   />
                   <InputGroupAddon align="block-end">
@@ -142,7 +144,7 @@ export function ContactForm() {
           }}
         />
       </FieldGroup>
-      <Button type="submit" className="max-w-fit" variant="default" disabled={isPending}>
+      <Button type="submit" className="cursor-target max-w-fit" variant="default" disabled={isPending}>
         {isPending ? (
           <span className="flex items-center gap-2">
             <Spinner />

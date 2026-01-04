@@ -37,7 +37,7 @@ export function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="hover:text-primary text-md hover:border-accent border-2 px-2 transition-colors"
+        className="cursor-target hover:text-primary text-md hover:border-accent border-2 px-2 transition-colors"
         disabled={isPending}>
         {locale.toUpperCase()}
       </DropdownMenuTrigger>

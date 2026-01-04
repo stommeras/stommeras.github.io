@@ -30,7 +30,7 @@ export function Footer() {
 
   return (
     <footer className="border-border/40 bg-card/50 z-20 mt-auto flex w-full flex-col items-center justify-between gap-4 border-t p-4 backdrop-blur-sm md:flex-row">
-      <p className="text-muted-foreground text-sm" suppressHydrationWarning>
+      <p className="cursor-target text-muted-foreground text-sm" suppressHydrationWarning>
         Steffen Tømmerås © {currentYear}
       </p>
       <nav className="flex items-center gap-4" aria-label={t('footer.nav.ariaLabel')}>
@@ -40,7 +40,7 @@ export function Footer() {
             href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary text-lg transition-colors"
+            className="text-muted-foreground hover:text-primary cursor-target text-lg transition-colors"
             onMouseEnter={social.trigger}
             aria-label={t(`footer.nav.${social.key}.ariaLabel`)}>
             <animated.div style={social.style}>{social.icon}</animated.div>

@@ -22,7 +22,8 @@
     "cursorEffects": {
       "none": "Ingen",
       "choose": "Markøreffekt",
-      "magic": "Magisk mus"
+      "magic": "Magisk hale",
+      "target": "Målmarkør"
     },
     "footer": {
       "nav": {

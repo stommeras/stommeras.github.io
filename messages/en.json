@@ -22,7 +22,8 @@
     "cursorEffects": {
       "none": "None",
       "choose": "Cursor effects",
-      "magic": "Magic mouse"
+      "magic": "Magic trail",
+      "target": "Target cursor"
     },
     "footer": {
       "nav": {

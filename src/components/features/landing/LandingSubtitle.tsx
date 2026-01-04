@@ -10,7 +10,7 @@ export async function LandingSubtitle() {
   const parts = subtitle.split(highlight);
 
   return (
-    <Subtitle>
+    <Subtitle className="cursor-target">
       {parts[0]}
       <MagicText text={highlight} />
       {parts[1]}

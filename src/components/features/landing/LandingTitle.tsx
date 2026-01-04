@@ -7,7 +7,7 @@ const CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 export function LandingTitle() {
   return (
-    <Title className="relative cursor-pointer" tabIndex={0} role="button">
+    <Title className="cursor-target relative cursor-pointer" tabIndex={0} role="button">
       <DecryptedText text={TITLE} characters={CHARACTERS} {...DECRYPT_PRESETS.dramatic} animateOn="both" />
     </Title>
   );
